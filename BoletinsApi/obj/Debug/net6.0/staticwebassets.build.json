@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "c790fAksMfK7jBW8m7HQslHbTafP7in6hpfuf0UX0SQ=",
+  "Source": "ApiBoletins",
+  "BasePath": "_content/ApiBoletins",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ApiBoletins\\wwwroot",
+      "Source": "ApiBoletins",
+      "ContentRoot": "C:\\Users\\lucas\\source\\repos\\BoletinsOcorrencia\\FirstAPI\\FirstAPI\\wwwroot\\",
+      "BasePath": "_content/ApiBoletins",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\lucas\\source\\repos\\BoletinsOcorrencia\\FirstAPI\\FirstAPI\\wwwroot\\index.html.html",
+      "SourceId": "ApiBoletins",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lucas\\source\\repos\\BoletinsOcorrencia\\FirstAPI\\FirstAPI\\wwwroot\\",
+      "BasePath": "_content/ApiBoletins",
+      "RelativePath": "index.html.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html.html"
+    }
+  ]
+}

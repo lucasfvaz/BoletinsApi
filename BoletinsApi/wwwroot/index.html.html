@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de API de Carros</title>
+</head>
+<body>
+    <h1>Teste de API de Carros</h1>
+
+    <!-- Formulário de Criação -->
+    <h2>Adicionar Carro</h2>
+    <form id="formAdicionarCarro">
+        <label>Marca:</label>
+        <input type="text" id="marca" required>
+        <br>
+        <label>Modelo:</label>
+        <input type="text" id="modelo" required>
+        <br>
+        <label>Ano:</label>
+        <input type="number" id="ano" required>
+        <br>
+        <button type="submit">Adicionar Carro</button>
+    </form>
+
+    <!-- Lista de Carros -->
+    <h2>Lista de Carros</h2>
+    <ul id="listaCarros"></ul>
+
+    <!-- Formulário de Atualização -->
+    <h2>Atualizar Carro</h2>
+    <form id="formAtualizarCarro">
+        <label>ID do Carro:</label>
+        <input type="number" id="atualizarId" required>
+        <br>
+        <label>Marca:</label>
+        <input type="text" id="atualizarMarca" required>
+        <br>
+        <label>Modelo:</label>
+        <input type="text" id="atualizarModelo" required>
+        <br>
+        <label>Ano:</label>
+        <input type="number" id="atualizarAno" required>
+        <br>
+        <button type="submit">Atualizar Carro</button>
+    </form>
+
+    <!-- Formulário de Exclusão -->
+    <h2>Excluir Carro</h2>
+    <form id="formExcluirCarro">
+        <label>ID do Carro a Excluir:</label>
+        <input type="number" id="excluirId" required>
+        <br>
+        <button type="submit">Excluir Carro</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Manipulação de eventos em jQuery
+        $(document).ready(function () {
+            // Função para carregar a lista de carros
+            function carregarCarros() {
+                $.get("/FirstApi/Carros", function (data) {
+                    var listaCarros = $("#listaCarros");
+                    listaCarros.empty();
+                    data.forEach(function (carro) {
+                        listaCarros.append(`<li>ID: ${carro.id}, Marca: ${carro.marca}, Modelo: ${carro.modelo}, Ano: ${carro.ano}</li>`);
+                    });
+                });
+            }
+
+            // Carregue a lista de carros na inicialização
+            carregarCarros();
+
+            // Manipulador de evento para adicionar um carro
+            $("#formAdicionarCarro").submit(function (event) {
+                event.preventDefault();
+                $.post("/FirstApi/Carros", {
+                    Marca: $("#marca").val(),
+                    Modelo: $("#modelo").val(),
+                    Ano: $("#ano").val()
+                }, function () {
+                    carregarCarros();
+                });
+            });
+
+            // Manipulador de evento para atualizar um carro
+            $("#formAtualizarCarro").submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "PUT",
+                    url: "/FirstApi/Carros/" + $("#atualizarId").val(),
+                    data: {
+                        Id: $("#atualizarId").val(),
+                        Marca: $("#atualizarMarca").val(),
+                        Modelo: $("#atualizarModelo").val(),
+                        Ano: $("#atualizarAno").val()
+                    },
+                    success: function () {
+                        carregarCarros();
+                    }
+                });
+            });
+
+            // Manipulador de evento para excluir um carro
+            $("#formExcluirCarro").submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "DELETE",
+                    url: "/FirstApi/Carros/" + $("#excluirId").val(),
+                    success: function () {
+                        carregarCarros();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
