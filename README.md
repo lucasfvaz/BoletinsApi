@@ -1,0 +1,1 @@
+Projeto realizado na disciplina de Tópicos Avançados da Tecnologia da Informação, o projeto consistem em uma RestApi utilizada para processar boletins de ocorrencia registrados na Secretaria da Segurança Pública de São Paulo.
